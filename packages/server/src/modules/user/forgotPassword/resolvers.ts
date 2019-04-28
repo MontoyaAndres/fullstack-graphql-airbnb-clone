@@ -9,6 +9,7 @@ import { userNotFoundError, expiredKeyError } from "./errorMessages";
 import { forgotPasswordPrefix } from "../../../constants";
 import { registerPasswordValidation } from "../../../yupSchemas";
 import { formatYupError } from "../../../utils/formatYupError";
+import { GQL } from "../../../types/schema";
 
 // 20 minutes
 // lock account

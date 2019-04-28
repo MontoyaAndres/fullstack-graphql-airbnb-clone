@@ -9,6 +9,7 @@ import {
   invalidEmail
 } from "./errorMessages";
 import { registerPasswordValidation } from "../../../yupSchemas";
+import { GQL } from "../../../types/schema";
 // import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
 // import { sendEmail } from "../../utils/sendEmail";
 
@@ -23,11 +24,7 @@ const schema = yup.object().shape({
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    register: async (
-      _,
-      args: GQL.IRegisterOnMutationArguments
-      // { redis, url }
-    ) => {
+    register: async (_, args: GQL.IRegisterOnMutationArguments) => {
       try {
         await schema.validate(args, { abortEarly: false });
       } catch (err) {
