@@ -4,12 +4,16 @@ import { ResolverMap } from "../../../types/graphql-utils";
 import { User } from "../../../entity/User";
 import { formatYupError } from "../../../utils/formatYupError";
 import { GQL } from "../../../types/schema";
-// import { createConfirmEmailLink } from "../../utils/createConfirmEmailLink";
-// import { sendEmail } from "../../utils/sendEmail";
+import { createConfirmEmailLink } from "./createConfirmEmailLink";
+import { sendEmail } from "../../../utils/sendEmail";
 
 export const resolvers: ResolverMap = {
   Mutation: {
-    register: async (_, args: GQL.IRegisterOnMutationArguments) => {
+    register: async (
+      _,
+      args: GQL.IRegisterOnMutationArguments,
+      { redis, url }
+    ) => {
       try {
         await validUserSchema.validate(args, { abortEarly: false });
       } catch (err) {
@@ -39,12 +43,12 @@ export const resolvers: ResolverMap = {
 
       await user.save();
 
-      // if (process.env.NODE_ENV !== "test") {
-      //   await sendEmail(
-      //     email,
-      //     await createConfirmEmailLink(url, user.id, redis)
-      //   );
-      // }
+      if (process.env.NODE_ENV !== "test") {
+        await sendEmail(
+          email,
+          await createConfirmEmailLink(url, user.id, redis)
+        );
+      }
 
       return null;
     }

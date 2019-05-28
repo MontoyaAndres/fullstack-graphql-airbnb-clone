@@ -1,9 +1,12 @@
 import * as React from "react";
-import { Form, Icon, Input, Button } from "antd";
-import { FormikErrors, FormikProps, withFormik } from "formik";
+import * as Antd from "antd";
+import { FormikErrors, FormikProps, withFormik, Form, Field } from "formik";
 import { validUserSchema } from "@abb/common";
 
-const FormItem = Form.Item;
+import { InputField } from "../../shared/InputField";
+
+const { Form: AntForm, Icon, Button } = Antd;
+const FormItem = AntForm.Item;
 
 interface FormValues {
   email: string;
@@ -14,77 +17,41 @@ interface Props {
   submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
 }
 
-class C extends React.PureComponent<FormikProps<FormValues> & Props> {
-  render() {
-    const {
-      values,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      touched,
-      errors
-    } = this.props;
+const C: React.SFC<FormikProps<FormValues> & Props> = () => (
+  <Form method="POST" style={{ display: "flex" }}>
+    <div style={{ width: 400, margin: "auto" }}>
+      <Field
+        type="email"
+        name="email"
+        prefix={<Icon type="user" style={{ color: "rgba(0, 0, 0, .25)" }} />}
+        placeholder="Email"
+        component={InputField}
+      />
 
-    return (
-      <form method="POST" style={{ display: "flex" }} onSubmit={handleSubmit}>
-        <div style={{ width: 400, margin: "auto" }}>
-          <FormItem
-            help={touched.email && errors.email ? "Wrong email" : ""}
-            validateStatus={touched.email && errors.email ? "error" : undefined}
-          >
-            <Input
-              name="email"
-              prefix={
-                <Icon type="user" style={{ color: "rgba(0, 0, 0, .25)" }} />
-              }
-              placeholder="Email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </FormItem>
+      <Field
+        type="password"
+        name="password"
+        prefix={<Icon type="lock" style={{ color: "rgba(0, 0, 0, .25)" }} />}
+        placeholder="Password"
+        component={InputField}
+      />
 
-          <FormItem
-            help={touched.password && errors.password ? "Wrong password" : ""}
-            validateStatus={
-              touched.password && errors.password ? "error" : undefined
-            }
-          >
-            <Input
-              name="password"
-              prefix={
-                <Icon type="lock" style={{ color: "rgba(0, 0, 0, .25)" }} />
-              }
-              type="password"
-              placeholder="Password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </FormItem>
+      <FormItem>
+        <a className="login-form-forgot">Forgot password</a>
+      </FormItem>
 
-          <FormItem>
-            <a className="login-form-forgot">Forgot password</a>
-          </FormItem>
+      <FormItem>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Register
+        </Button>
+      </FormItem>
 
-          <FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Register
-            </Button>
-          </FormItem>
-
-          <FormItem>
-            Or <a>Login now!</a>
-          </FormItem>
-        </div>
-      </form>
-    );
-  }
-}
+      <FormItem>
+        Or <a>Login now!</a>
+      </FormItem>
+    </div>
+  </Form>
+);
 
 export const RegisterView = withFormik<Props, FormValues>({
   validationSchema: validUserSchema,

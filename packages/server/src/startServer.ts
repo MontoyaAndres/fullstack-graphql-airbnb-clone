@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import "dotenv/config";
+import "dotenv-safe/config";
 import { GraphQLServer } from "graphql-yoga";
 import * as session from "express-session";
 import * as connectRedis from "connect-redis";
@@ -13,7 +13,6 @@ import { genSchema } from "./utils/genSchema";
 import { redisSessionPrefix } from "./constants";
 import { createTestConn } from "./testUtils/createTestConn";
 
-const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session as any);
 
 export const startServer = async () => {
@@ -37,7 +36,8 @@ export const startServer = async () => {
         client: redis
       }),
       windowMs: 15 * 60 * 1000, // 15 minutes
-      max: 100 // limit each IP to 100 requests per windowMs
+      max: 100, // limit each IP to 100 requests per windowMs
+      delayMs: 0 // disable delaying - full speed until the max limit is reached
     })
   );
 
@@ -48,7 +48,7 @@ export const startServer = async () => {
         prefix: redisSessionPrefix
       }),
       name: "qid",
-      secret: SESSION_SECRET,
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
       cookie: {
