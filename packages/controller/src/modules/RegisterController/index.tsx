@@ -2,9 +2,11 @@ import * as React from "react";
 import { graphql, ChildMutateProps } from "react-apollo";
 import gql from "graphql-tag";
 
+import { RegisterMutation, RegisterMutationVariables } from "../../schemaTypes";
+
 interface Props {
   children: (data: {
-    submit: (values: any) => Promise<null>;
+    submit: (values: RegisterMutationVariables) => Promise<null>;
   }) => JSX.Element | null;
 }
 
@@ -17,11 +19,10 @@ const registerMutation = gql`
   }
 `;
 
-const C: React.SFC<ChildMutateProps<Props, any, any>> = ({
-  children,
-  mutate
-}) => {
-  async function submit(values: any) {
+const C: React.SFC<
+  ChildMutateProps<Props, RegisterMutation, RegisterMutationVariables>
+> = ({ children, mutate }) => {
+  async function submit(values: RegisterMutationVariables) {
     const response = await mutate({ variables: values });
 
     console.log(response);
@@ -32,4 +33,8 @@ const C: React.SFC<ChildMutateProps<Props, any, any>> = ({
   return children({ submit });
 };
 
-export const RegisterController = graphql(registerMutation)(C);
+export const RegisterController = graphql<
+  Props,
+  RegisterMutation,
+  RegisterMutationVariables
+>(registerMutation)(C);

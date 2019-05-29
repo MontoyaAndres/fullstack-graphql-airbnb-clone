@@ -6,7 +6,7 @@ import { RegisterView } from "./ui/RegisterView";
 export const RegisterConnector: React.SFC = () => {
   return (
     <RegisterController>
-      {({ submit }: { submit: any }) => <RegisterView submit={submit} />}
+      {({ submit }) => <RegisterView submit={submit} />}
     </RegisterController>
   );
 };

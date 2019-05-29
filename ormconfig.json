@@ -1,5 +1,11 @@
 [
   {
+    "name": "production",
+    "type": "postgres",
+    "synchronize": true,
+    "logging": true
+  },
+  {
     "name": "development",
     "type": "postgres",
     "host": "localhost",

@@ -18,9 +18,11 @@
     "@types/uuid": "^3.4.3",
     "@types/ws": "^6.0.1",
     "@types/yup": "^0.26.13",
+    "copyfiles": "^2.1.0",
     "gql2ts": "^1.7.2",
     "jest": "^24.7.1",
     "nodemon": "^1.17.3",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
     "ts-node": "8.1.0",
     "tslint": "^5.9.1",
@@ -61,6 +63,7 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
     "test": "NODE_ENV=test jest --watch",
+    "build": "rimraf ./dist && tsc --skipLibCheck && copyfiles -u 1 src/**/*.graphql dist",
     "gen-schema-types": "ts-node src/scripts/createTypes.ts"
   },
   "jest": {

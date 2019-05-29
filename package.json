@@ -5,7 +5,17 @@
   "author": "MontoyaAndres <andresmontoyafcb@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build:server": "lerna run build --scope={@abb/common,@abb/server}"
+  },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "nohoist": [
+    "**/rimraf",
+    "**/rimraf/**"
+  ],
+  "devDependencies": {
+    "lerna": "^3.14.1"
+  }
 }
