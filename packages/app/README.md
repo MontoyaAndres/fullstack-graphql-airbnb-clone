@@ -1,5 +1,6 @@
 ## Tips to clean it
 
+```
 echo 256 | sudo tee -a /proc/sys/fs/inotify/max_user_instances
 echo 32768 | sudo tee -a /proc/sys/fs/inotify/max_queued_events
 echo 65536 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
@@ -10,3 +11,4 @@ rm -r ../../node_modules
 yarn cache clean
 cd ../../
 yarn install
+```
