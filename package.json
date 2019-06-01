@@ -19,10 +19,8 @@
     "**/react-native/**",
     "**/expo",
     "**/expo/**",
-    "**/react-native-typescript-transformer",
-    "**/react-native-typescript-transformer/**",
-    "**/metro-bundler-config-yarn-workspaces",
-    "**/metro-bundler-config-yarn-workspaces/**"
+    "**/jest-expo",
+    "**/jest-expo/**"
   ],
   "devDependencies": {
     "lerna": "^3.14.1"
