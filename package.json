@@ -9,19 +9,19 @@
     "build:server": "lerna run build --scope={@abb/common,@abb/server}",
     "build:web": "lerna run build --scope={@abb/common,@abb/web}"
   },
-  "workspaces": [
-    "packages/*"
-  ],
-  "nohoist": [
-    "**/rimraf",
-    "**/rimraf/**",
-    "**/react-native",
-    "**/react-native/**",
-    "**/expo",
-    "**/expo/**",
-    "**/jest-expo",
-    "**/jest-expo/**"
-  ],
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/rimraf",
+      "**/rimraf/**",
+      "**/react-native",
+      "**/react-native/**",
+      "**/expo",
+      "**/expo/**",
+      "**/jest-expo",
+      "**/jest-expo/**"
+    ]
+  },
   "devDependencies": {
     "lerna": "^3.14.1"
   }
