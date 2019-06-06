@@ -12,6 +12,10 @@ https://www.youtube.com/watch?v=TpXNX1xkwZ8&list=PLN3n1USn4xlnfJIQBa6bBjjiECnk6z
 
 ## Problems:
 
+How to check better the errors in watchman: https://github.com/facebook/create-react-app/issues/346#issuecomment-237424953
+
+---
+
 ```
 jest-haste-map: Watchman crawl failed. Retrying once with node crawler.
   Usually this happens when watchman isn't running. Create an empty `.watchmanconfig` file in your project's root folder or initialize a git or hg repository in your project.
