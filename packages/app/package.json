@@ -1,28 +1,28 @@
 {
+  "main": "__generated__/AppEntry.js",
   "name": "@abb/app",
   "version": "1.0.0",
-  "main": "__generated__/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
+    "web": "expo start --web",
     "eject": "expo eject",
     "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
-    "expo": "^32.0.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "expo": "^33.0.0",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-web": "^0.11.4"
   },
   "devDependencies": {
-    "@types/expo": "^32.0.0",
-    "@types/react-native": "^0.57.0",
-    "babel-preset-expo": "^5.0.0",
+    "@types/react": "^16.8.19",
+    "@types/react-native": "^0.57.60",
+    "babel-preset-expo": "^5.1.1",
     "expo-yarn-workspaces": "^1.2.0",
-    "typescript": "^3.3.0"
-  },
-  "jest": {
-    "preset": "jest-expo"
+    "typescript": "^3.4.5"
   },
   "private": true
 }

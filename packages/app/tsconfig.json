@@ -1,18 +1,10 @@
 {
   "compilerOptions": {
-    "allowJs": false,
-    "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "jsx": "react-native",
-    "lib": ["es6"],
-    "moduleResolution": "node",
     "noEmit": true,
-    "strict": true,
-    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true
-  },
-  "exclude": ["node_modules"]
+  }
 }
