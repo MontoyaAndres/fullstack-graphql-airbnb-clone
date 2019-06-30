@@ -22,3 +22,11 @@ jest-haste-map: Watchman crawl failed. Retrying once with node crawler.
 ```
 
 **Solution:** https://github.com/guard/listen/wiki/Increasing-the-amount-of-inotify-watchers
+
+---
+
+```
+Callback with id 0: undefined.undefined() not found from android phone.
+```
+
+**Solution:** https://stackoverflow.com/questions/56498167/expo-33-yarn-workspaces-callback-with-id-0-undefined-undefined-not-found
